@@ -7,6 +7,14 @@ import { tracks, albums, formatNumber, formatCurrency } from "@/lib/data";
 
 type Tab = "tracks" | "albums";
 
+const glassCard = {
+  background: "var(--glass-bg)",
+  backdropFilter: "blur(20px)",
+  WebkitBackdropFilter: "blur(20px)",
+  border: "1px solid var(--glass-border)",
+  boxShadow: "var(--glass-shadow)",
+} as React.CSSProperties;
+
 const statusConfig = {
   active: { label: "Activo", color: "text-emerald-400", bg: "rgba(52,211,153,0.1)", icon: CheckCircle },
   pending: { label: "Pendiente", color: "text-amber-400", bg: "rgba(251,191,36,0.1)", icon: AlertCircle },
@@ -39,7 +47,7 @@ export default function CatalogPage() {
           { label: "Ingresos del Catálogo", value: formatCurrency(tracks.reduce((s, t) => s + t.revenue, 0)), icon: Clock, accent: "#f59e0b", sub: "Acumulado total" },
         ].map((s) => (
           <div key={s.label} className="rounded-2xl p-5 flex items-start gap-4"
-            style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}>
+            style={glassCard}>
             <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
               style={{ background: `${s.accent}22` }}>
               <s.icon size={18} style={{ color: s.accent }} />
@@ -55,7 +63,7 @@ export default function CatalogPage() {
 
       {/* Tabs + Search */}
       <div className="flex items-center justify-between">
-        <div className="flex gap-1 p-1 rounded-xl" style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}>
+        <div className="flex gap-1 p-1 rounded-xl" style={glassCard}>
           {(["tracks", "albums"] as Tab[]).map((t) => (
             <button key={t} onClick={() => setTab(t)}
               className="px-5 py-2 rounded-lg text-sm font-medium transition-all"
@@ -86,7 +94,7 @@ export default function CatalogPage() {
             Filtrar
           </button>
           <button className="px-4 py-2.5 rounded-xl text-sm font-medium text-white"
-            style={{ background: "linear-gradient(135deg, #7c3aed, #a855f7)" }}>
+            style={{ background: "linear-gradient(135deg, #7c3aed, #a855f7)", boxShadow: "0 4px 15px rgba(124,58,237,0.35)" }}>
             + Subir Canción
           </button>
         </div>
@@ -94,7 +102,7 @@ export default function CatalogPage() {
 
       {/* Tracks table */}
       {tab === "tracks" && (
-        <div className="rounded-2xl overflow-hidden" style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}>
+        <div className="rounded-2xl overflow-hidden" style={glassCard}>
           <table className="w-full text-sm">
             <thead>
               <tr className="text-xs border-b" style={{ color: "var(--muted-text)", borderColor: "var(--card-border)" }}>
@@ -166,7 +174,7 @@ export default function CatalogPage() {
             const st = statusConfig[album.status];
             return (
               <div key={album.id} className="rounded-2xl p-5 flex gap-5"
-                style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}>
+                style={glassCard}>
                 <div className="w-20 h-20 rounded-xl flex items-center justify-center text-2xl font-bold text-white shrink-0"
                   style={{ background: `linear-gradient(135deg, hsl(${i * 80 + 240}, 70%, 40%), hsl(${i * 80 + 270}, 70%, 55%))` }}>
                   {album.title.charAt(0)}

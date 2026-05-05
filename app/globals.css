@@ -9,6 +9,13 @@
   --accent-light: #a855f7;
   --muted: #1e1e30;
   --muted-text: #6b6b8a;
+  --glass-bg: rgba(16, 16, 28, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --glass-shadow: 0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06);
+  --glow-purple: 0 0 20px rgba(124,58,237,0.4);
+  --glow-accent: 0 0 30px rgba(168,85,247,0.25);
+  --gradient-sidebar: linear-gradient(180deg, #0d0d1a 0%, #12122a 100%);
+  --active-nav-bg: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(168,85,247,0.1));
 }
 
 @theme inline {
@@ -43,4 +50,14 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--muted-text);
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 12px rgba(124,58,237,0.3); }
+  50% { box-shadow: 0 0 24px rgba(168,85,247,0.5); }
+}
+
+@keyframes check-draw {
+  from { stroke-dashoffset: 100; }
+  to { stroke-dashoffset: 0; }
 }

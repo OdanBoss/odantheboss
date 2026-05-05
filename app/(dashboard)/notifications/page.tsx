@@ -3,6 +3,14 @@
 import { Bell, CheckCircle, AlertCircle, Info, XCircle } from "lucide-react";
 import { notifications } from "@/lib/data";
 
+const glassCard = {
+  background: "var(--glass-bg)",
+  backdropFilter: "blur(20px)",
+  WebkitBackdropFilter: "blur(20px)",
+  border: "1px solid var(--glass-border)",
+  boxShadow: "var(--glass-shadow)",
+} as React.CSSProperties;
+
 const typeConfig = {
   success: { icon: CheckCircle, color: "text-emerald-400", bg: "rgba(52,211,153,0.1)", border: "rgba(52,211,153,0.2)" },
   warning: { icon: AlertCircle, color: "text-amber-400", bg: "rgba(251,191,36,0.1)", border: "rgba(251,191,36,0.2)" },
@@ -33,7 +41,7 @@ export default function NotificationsPage() {
               const Icon = cfg.icon;
               return (
                 <div key={n.id} className="flex gap-4 p-4 rounded-2xl"
-                  style={{ background: cfg.bg, border: `1px solid ${cfg.border}` }}>
+                  style={{ ...glassCard, background: cfg.bg, border: `1px solid ${cfg.border}`, borderLeft: `4px solid ${cfg.border}` }}>
                   <Icon size={18} className={`mt-0.5 shrink-0 ${cfg.color}`} />
                   <div className="flex-1">
                     <p className="text-sm font-semibold text-white">{n.title}</p>
@@ -57,7 +65,7 @@ export default function NotificationsPage() {
               const Icon = cfg.icon;
               return (
                 <div key={n.id} className="flex gap-4 p-4 rounded-2xl"
-                  style={{ background: "var(--card)", border: "1px solid var(--card-border)", opacity: 0.7 }}>
+                  style={{ ...glassCard, opacity: 0.7 }}>
                   <Icon size={18} className={`mt-0.5 shrink-0 ${cfg.color}`} />
                   <div className="flex-1">
                     <p className="text-sm font-medium text-white">{n.title}</p>

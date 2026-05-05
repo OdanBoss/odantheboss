@@ -13,6 +13,14 @@ import {
   Cell,
 } from "recharts";
 
+const glassCard = {
+  background: "var(--glass-bg)",
+  backdropFilter: "blur(20px)",
+  WebkitBackdropFilter: "blur(20px)",
+  border: "1px solid var(--glass-border)",
+  boxShadow: "var(--glass-shadow)",
+} as React.CSSProperties;
+
 const statusConfig = {
   paid: { label: "Pagado", color: "text-emerald-400", bg: "rgba(52,211,153,0.1)", icon: CheckCircle },
   pending: { label: "Pendiente", color: "text-amber-400", bg: "rgba(251,191,36,0.1)", icon: Clock },
@@ -41,7 +49,7 @@ export default function RoyaltiesPage() {
           { label: "Canciones en Regalías", value: tracks.filter(t => t.status === "active").length.toString(), icon: TrendingUp, accent: "#ec4899", sub: "Generando ingresos" },
         ].map((s) => (
           <div key={s.label} className="rounded-2xl p-5 flex items-start gap-4"
-            style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}>
+            style={glassCard}>
             <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
               style={{ background: `${s.accent}22` }}>
               <s.icon size={18} style={{ color: s.accent }} />
@@ -57,7 +65,7 @@ export default function RoyaltiesPage() {
 
       {/* Bar chart + breakdown */}
       <div className="grid grid-cols-3 gap-5">
-        <div className="col-span-2 rounded-2xl p-6" style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}>
+        <div className="col-span-2 rounded-2xl p-6" style={glassCard}>
           <h2 className="text-base font-semibold text-white mb-1">Regalías Mensuales</h2>
           <p className="text-sm mb-5" style={{ color: "var(--muted-text)" }}>Historial de ingresos por período</p>
           <ResponsiveContainer width="100%" height={220}>
@@ -87,7 +95,7 @@ export default function RoyaltiesPage() {
         </div>
 
         {/* Rate breakdown */}
-        <div className="rounded-2xl p-6" style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}>
+        <div className="rounded-2xl p-6" style={glassCard}>
           <h2 className="text-base font-semibold text-white mb-5">Tarifas por Stream</h2>
           <div className="space-y-4">
             {[
@@ -117,7 +125,7 @@ export default function RoyaltiesPage() {
       </div>
 
       {/* Statements table */}
-      <div className="rounded-2xl overflow-hidden" style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}>
+      <div className="rounded-2xl overflow-hidden" style={glassCard}>
         <div className="flex items-center justify-between px-6 py-5 border-b" style={{ borderColor: "var(--card-border)" }}>
           <h2 className="text-base font-semibold text-white">Declaraciones de Regalías</h2>
           <button className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium"
