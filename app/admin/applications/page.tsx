@@ -45,14 +45,14 @@ export default function AdminApplicationsPage() {
 
   return (
     <ProtectedRoute>
-      <div className="space-y-6">
+      <div className="space-y-8">
         <div>
-          <h1 className="text-2xl font-bold text-white" style={{ textShadow: "0 0 20px rgba(168,85,247,0.3)" }}>Solicitudes de Sellos</h1>
-          <p className="text-sm mt-1" style={{ color: "var(--muted-text)" }}>Gestiona las solicitudes de nuevos sellos discográficos</p>
+          <h1 className="text-4xl font-bold text-white mb-2">Solicitudes de Sellos</h1>
+          <p style={{ color: "rgba(255,255,255,0.6)" }}>Revisa y aprueba solicitudes de nuevos sellos discográficos para distribución</p>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-4 gap-4 mt-8">
           {(["all", "pending", "approved", "rejected"] as Filter[]).map((f) => (
             <div key={f} className="rounded-2xl p-4 text-center relative overflow-hidden cursor-pointer transition-all"
               style={{ ...glassCard, border: filter === f ? "1px solid rgba(168,85,247,0.4)" : "1px solid var(--glass-border)" }}
@@ -67,8 +67,12 @@ export default function AdminApplicationsPage() {
         </div>
 
         {/* Table */}
-        <div className="rounded-2xl overflow-hidden relative" style={glassCard}>
-          <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: "linear-gradient(90deg, transparent, #f59e0b55, transparent)" }} />
+        <div className="rounded-3xl overflow-hidden relative mt-8" style={{
+          ...glassCard,
+          background: "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)",
+          boxShadow: "0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05), 0 -1px 0 0 rgba(245,158,11,0.2) inset",
+        }}>
+          <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: "linear-gradient(90deg, transparent, #f59e0b, transparent)", opacity: 0.8 }} />
           <table className="w-full text-sm">
             <thead>
               <tr className="text-xs border-b" style={{ color: "var(--muted-text)", borderColor: "var(--glass-border)" }}>

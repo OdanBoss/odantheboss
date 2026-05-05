@@ -35,16 +35,20 @@ export default function AdminSettingsPage() {
 
   return (
     <ProtectedRoute>
-      <div className="max-w-2xl space-y-6">
+      <div className="max-w-3xl space-y-8">
         <div>
-          <h1 className="text-2xl font-bold text-white" style={{ textShadow: "0 0 20px rgba(168,85,247,0.3)" }}>Configuración</h1>
-          <p className="text-sm mt-1" style={{ color: "var(--muted-text)" }}>Gestiona tu perfil y preferencias</p>
+          <h1 className="text-4xl font-bold text-white mb-2">Configuración</h1>
+          <p style={{ color: "rgba(255,255,255,0.6)" }}>Personaliza tu perfil, cuenta y preferencias de notificaciones</p>
         </div>
 
         {/* Perfil del Artista */}
-        <div className="rounded-2xl p-6 space-y-5 relative overflow-hidden" style={glassCard}>
-          <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: "linear-gradient(90deg, transparent, #7c3aed55, transparent)" }} />
-          <h2 className="text-base font-semibold text-white">Perfil del Artista</h2>
+        <div className="rounded-3xl p-8 space-y-6 relative overflow-hidden" style={{
+          ...glassCard,
+          background: "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)",
+          boxShadow: "0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05), 0 -1px 0 0 rgba(124,58,237,0.2) inset",
+        }}>
+          <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: "linear-gradient(90deg, transparent, #7c3aed, transparent)", opacity: 0.8 }} />
+          <h2 className="text-lg font-bold text-white">Perfil del Artista</h2>
           <div className="flex items-center gap-4">
             <div className="w-16 h-16 rounded-2xl flex items-center justify-center text-xl font-bold text-white shrink-0"
               style={{ background: "linear-gradient(135deg, #7c3aed, #ec4899)" }}>
@@ -84,9 +88,13 @@ export default function AdminSettingsPage() {
         </div>
 
         {/* Información de Cuenta */}
-        <div className="rounded-2xl p-6 space-y-5 relative overflow-hidden" style={glassCard}>
-          <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: "linear-gradient(90deg, transparent, #10b98155, transparent)" }} />
-          <h2 className="text-base font-semibold text-white">Información de Cuenta</h2>
+        <div className="rounded-3xl p-8 space-y-6 relative overflow-hidden" style={{
+          ...glassCard,
+          background: "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)",
+          boxShadow: "0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05), 0 -1px 0 0 rgba(16,185,129,0.2) inset",
+        }}>
+          <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: "linear-gradient(90deg, transparent, #10b981, transparent)", opacity: 0.8 }} />
+          <h2 className="text-lg font-bold text-white">Información de Cuenta</h2>
           <div className="space-y-4">
             <div>
               <label className="block text-xs font-medium mb-1.5" style={{ color: "var(--muted-text)" }}>Email</label>
@@ -116,9 +124,13 @@ export default function AdminSettingsPage() {
         </div>
 
         {/* Preferencias */}
-        <div className="rounded-2xl p-6 space-y-5 relative overflow-hidden" style={glassCard}>
-          <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: "linear-gradient(90deg, transparent, #f59e0b55, transparent)" }} />
-          <h2 className="text-base font-semibold text-white">Preferencias de Notificaciones</h2>
+        <div className="rounded-3xl p-8 space-y-6 relative overflow-hidden" style={{
+          ...glassCard,
+          background: "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)",
+          boxShadow: "0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05), 0 -1px 0 0 rgba(245,158,11,0.2) inset",
+        }}>
+          <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: "linear-gradient(90deg, transparent, #f59e0b, transparent)", opacity: 0.8 }} />
+          <h2 className="text-lg font-bold text-white">Preferencias de Notificaciones</h2>
           <div className="space-y-4">
             {[
               { label: "Notificaciones por Email", desc: "Recibe actualizaciones en tu correo", key: "emailNotifs" },

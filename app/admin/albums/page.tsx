@@ -56,23 +56,30 @@ export default function AdminAlbumsPage() {
 
   return (
     <ProtectedRoute>
-      <div className="space-y-6">
+      <div className="space-y-8">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-white" style={{ textShadow: "0 0 20px rgba(168,85,247,0.3)" }}>Álbumes</h1>
-            <p className="text-sm mt-1" style={{ color: "var(--muted-text)" }}>{albumList.length} álbumes en el catálogo</p>
+            <h1 className="text-4xl font-bold text-white mb-2">Gestión de Álbumes</h1>
+            <p style={{ color: "rgba(255,255,255,0.6)" }}>Administra y publica tus álbumes: {albumList.length} álbumes distribuidos</p>
           </div>
-          <button onClick={openAdd} className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-white"
-            style={{ background: "linear-gradient(135deg, #ec4899, #a855f7)", boxShadow: "0 4px 15px rgba(236,72,153,0.35)" }}>
-            <Plus size={16} /> Agregar Álbum
+          <button onClick={openAdd} className="flex items-center gap-2 px-5 py-3 rounded-lg text-sm font-bold text-white transition-all transform hover:scale-105 hover:-translate-y-1 active:scale-95"
+            style={{
+              background: "linear-gradient(135deg, #ec4899, #a855f7)",
+              boxShadow: "0 6px 20px rgba(236,72,153,0.4)"
+            }}>
+            <Plus size={18} /> Agregar Álbum
           </button>
         </div>
 
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-2 gap-6 mt-8">
           {albumList.map((album, i) => {
             const st = statusConfig[album.status];
             return (
-              <div key={album.id} className="rounded-2xl p-5 flex gap-5 relative overflow-hidden" style={glassCard}>
+              <div key={album.id} className="rounded-3xl p-6 flex gap-5 relative overflow-hidden group transition-all transform hover:scale-105 hover:-translate-y-1" style={{
+                ...glassCard,
+                background: "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)",
+                boxShadow: "0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05), 0 -1px 0 0 rgba(255,255,255,0.1) inset",
+              }}>
                 <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: `linear-gradient(90deg, transparent, hsl(${i * 80 + 240}, 70%, 55%)55, transparent)` }} />
                 <div className="w-20 h-20 rounded-xl flex items-center justify-center text-2xl font-bold text-white shrink-0"
                   style={{ background: `linear-gradient(135deg, hsl(${i * 80 + 240}, 70%, 40%), hsl(${i * 80 + 270}, 70%, 55%))` }}>
