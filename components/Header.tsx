@@ -83,9 +83,9 @@ export default function Header() {
       <div
         className="absolute bottom-0 left-0 right-0"
         style={{
-          height: 1,
+          height: 2,
           background: "linear-gradient(90deg, transparent, #7c3aed, #a855f7, #ec4899, #a855f7, #7c3aed, transparent)",
-          opacity: 0.7,
+          opacity: 0.9,
         }}
       />
     </header>

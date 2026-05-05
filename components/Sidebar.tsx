@@ -71,7 +71,7 @@ export default function Sidebar() {
               href={href}
               className="relative flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200"
               style={{
-                background: active ? "var(--active-nav-bg)" : "transparent",
+                background: active ? "rgba(124,58,237,0.25)" : "transparent",
                 color: active ? "#a855f7" : "var(--muted-text)",
                 border: active ? "1px solid rgba(168,85,247,0.3)" : "1px solid transparent",
                 boxShadow: active ? "var(--glow-accent)" : "none",
