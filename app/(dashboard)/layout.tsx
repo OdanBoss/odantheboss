@@ -1,7 +1,12 @@
+"use client";
+
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
+import { SidebarProvider, useSidebar } from "@/context/SidebarContext";
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+function DashboardContent({ children }: { children: React.ReactNode }) {
+  const { collapsed } = useSidebar();
+
   return (
     <>
       {/* Background ambient */}
@@ -14,10 +19,21 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         `,
       }} />
       <Sidebar />
-      <div className="ml-64 flex flex-col min-h-screen">
+      <div
+        className="flex flex-col min-h-screen transition-all duration-300"
+        style={{ marginLeft: collapsed ? "80px" : "256px" }}
+      >
         <Header />
         <main className="flex-1 p-8">{children}</main>
       </div>
     </>
+  );
+}
+
+export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <SidebarProvider>
+      <DashboardContent>{children}</DashboardContent>
+    </SidebarProvider>
   );
 }
