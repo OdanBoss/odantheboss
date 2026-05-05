@@ -23,10 +23,10 @@ export default function Header() {
     <header
       className="flex items-center justify-between px-8 py-4 sticky top-0 z-10"
       style={{
-        background: "rgba(8,8,16,0.75)",
-        backdropFilter: "blur(20px)",
-        WebkitBackdropFilter: "blur(20px)",
-        borderBottom: "1px solid var(--glass-border)",
+        background: "rgba(8,8,20,0.82)",
+        backdropFilter: "blur(24px)",
+        WebkitBackdropFilter: "blur(24px)",
+        borderBottom: "1px solid rgba(124,58,237,0.2)",
       }}
     >
       <div>
@@ -84,8 +84,8 @@ export default function Header() {
         className="absolute bottom-0 left-0 right-0"
         style={{
           height: 1,
-          background: "linear-gradient(90deg, transparent, #7c3aed, #a855f7, transparent)",
-          opacity: 0.5,
+          background: "linear-gradient(90deg, transparent, #7c3aed, #a855f7, #ec4899, #a855f7, #7c3aed, transparent)",
+          opacity: 0.7,
         }}
       />
     </header>

@@ -31,9 +31,11 @@ export default function Sidebar() {
     <aside
       className="fixed left-0 top-0 h-full w-64 flex flex-col z-20"
       style={{
-        background: "var(--gradient-sidebar)",
-        borderRight: "1px solid var(--glass-border)",
-        boxShadow: "4px 0 24px rgba(0,0,0,0.4)",
+        background: "linear-gradient(180deg, rgba(13,13,26,0.97) 0%, rgba(18,18,42,0.97) 100%)",
+        backdropFilter: "blur(20px)",
+        WebkitBackdropFilter: "blur(20px)",
+        borderRight: "1px solid rgba(124,58,237,0.2)",
+        boxShadow: "4px 0 40px rgba(0,0,0,0.6), inset -1px 0 0 rgba(124,58,237,0.1)",
       }}
     >
       {/* Logo */}
