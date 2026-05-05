@@ -28,12 +28,26 @@ export default function Sidebar() {
   const unread = notifications.filter((n) => !n.read).length;
 
   return (
-    <aside className="fixed left-0 top-0 h-full w-64 flex flex-col z-20"
-      style={{ background: "var(--card)", borderRight: "1px solid var(--card-border)" }}>
+    <aside
+      className="fixed left-0 top-0 h-full w-64 flex flex-col z-20"
+      style={{
+        background: "var(--gradient-sidebar)",
+        borderRight: "1px solid var(--glass-border)",
+        boxShadow: "4px 0 24px rgba(0,0,0,0.4)",
+      }}
+    >
       {/* Logo */}
-      <div className="flex items-center gap-3 px-6 py-5 border-b" style={{ borderColor: "var(--card-border)" }}>
-        <div className="w-9 h-9 rounded-xl flex items-center justify-center"
-          style={{ background: "linear-gradient(135deg, #7c3aed, #a855f7)" }}>
+      <div
+        className="flex items-center gap-3 px-6 py-5 border-b"
+        style={{ borderColor: "var(--glass-border)" }}
+      >
+        <div
+          className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
+          style={{
+            background: "linear-gradient(135deg, #7c3aed, #a855f7)",
+            boxShadow: "var(--glow-purple)",
+          }}
+        >
           <Radio size={18} className="text-white" />
         </div>
         <div>
@@ -42,18 +56,31 @@ export default function Sidebar() {
         </div>
       </div>
 
+      {/* Gradient separator */}
+      <div style={{ height: 1, background: "linear-gradient(90deg, transparent, #7c3aed55, transparent)" }} />
+
       {/* Nav */}
       <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
         {navItems.map(({ href, icon: Icon, label }) => {
           const active = pathname === href;
           return (
-            <Link key={href} href={href}
-              className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all group"
+            <Link
+              key={href}
+              href={href}
+              className="relative flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200"
               style={{
-                background: active ? "linear-gradient(135deg, rgba(124,58,237,0.25), rgba(168,85,247,0.15))" : "transparent",
+                background: active ? "var(--active-nav-bg)" : "transparent",
                 color: active ? "#a855f7" : "var(--muted-text)",
                 border: active ? "1px solid rgba(168,85,247,0.3)" : "1px solid transparent",
-              }}>
+                boxShadow: active ? "var(--glow-accent)" : "none",
+              }}
+            >
+              {active && (
+                <div
+                  className="absolute left-0 top-1/2 -translate-y-1/2 w-1 rounded-r"
+                  style={{ height: "60%", background: "#a855f7" }}
+                />
+              )}
               <Icon size={18} className="shrink-0" />
               <span className="flex-1">{label}</span>
               {active && <ChevronRight size={14} />}
@@ -63,15 +90,19 @@ export default function Sidebar() {
       </nav>
 
       {/* Bottom */}
-      <div className="px-3 py-4 space-y-1 border-t" style={{ borderColor: "var(--card-border)" }}>
-        <Link href="/notifications"
-          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all"
-          style={{ color: "var(--muted-text)" }}>
+      <div className="px-3 py-4 space-y-1 border-t" style={{ borderColor: "var(--glass-border)" }}>
+        <Link
+          href="/notifications"
+          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 hover:bg-white/[0.04]"
+          style={{ color: "var(--muted-text)" }}
+        >
           <div className="relative">
             <Bell size={18} />
             {unread > 0 && (
-              <span className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full text-[10px] flex items-center justify-center text-white font-bold"
-                style={{ background: "#7c3aed" }}>
+              <span
+                className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full text-[10px] flex items-center justify-center text-white font-bold"
+                style={{ background: "#7c3aed" }}
+              >
                 {unread}
               </span>
             )}
@@ -83,18 +114,29 @@ export default function Sidebar() {
             </span>
           )}
         </Link>
-        <Link href="/settings"
-          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all"
-          style={{ color: "var(--muted-text)" }}>
+
+        <Link
+          href="/settings"
+          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 hover:bg-white/[0.04]"
+          style={{ color: "var(--muted-text)" }}
+        >
           <Settings size={18} />
           <span>Configuración</span>
         </Link>
 
         {/* Artist card */}
-        <div className="mt-3 p-3 rounded-xl" style={{ background: "var(--muted)" }}>
+        <div
+          className="mt-3 p-3 rounded-xl"
+          style={{
+            background: "rgba(255,255,255,0.04)",
+            border: "1px solid var(--glass-border)",
+          }}
+        >
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-white"
-              style={{ background: "linear-gradient(135deg, #7c3aed, #ec4899)" }}>
+            <div
+              className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-white shrink-0"
+              style={{ background: "linear-gradient(135deg, #7c3aed, #ec4899)" }}
+            >
               OB
             </div>
             <div className="flex-1 min-w-0">

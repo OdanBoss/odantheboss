@@ -20,34 +20,74 @@ export default function Header() {
   const unread = notifications.filter((n) => !n.read).length;
 
   return (
-    <header className="flex items-center justify-between px-8 py-4 border-b sticky top-0 z-10"
-      style={{ background: "rgba(8,8,16,0.8)", backdropFilter: "blur(12px)", borderColor: "var(--card-border)" }}>
+    <header
+      className="flex items-center justify-between px-8 py-4 sticky top-0 z-10"
+      style={{
+        background: "rgba(8,8,16,0.75)",
+        backdropFilter: "blur(20px)",
+        WebkitBackdropFilter: "blur(20px)",
+        borderBottom: "1px solid var(--glass-border)",
+      }}
+    >
       <div>
-        <h1 className="text-xl font-bold text-white">{page.title}</h1>
+        <h1
+          className="text-xl font-bold text-white"
+          style={{ textShadow: "0 0 20px rgba(168,85,247,0.3)" }}
+        >
+          {page.title}
+        </h1>
         <p className="text-sm" style={{ color: "var(--muted-text)" }}>{page.subtitle}</p>
       </div>
 
       <div className="flex items-center gap-3">
-        <div className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm"
-          style={{ background: "var(--card)", border: "1px solid var(--card-border)", color: "var(--muted-text)" }}>
+        <div
+          className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm transition-all"
+          style={{
+            background: "var(--glass-bg)",
+            border: "1px solid var(--glass-border)",
+            color: "var(--muted-text)",
+          }}
+        >
           <Search size={15} />
           <span>Buscar...</span>
-          <kbd className="ml-4 text-xs px-1.5 py-0.5 rounded" style={{ background: "var(--muted)", color: "var(--muted-text)" }}>⌘K</kbd>
+          <kbd
+            className="ml-4 text-xs px-1.5 py-0.5 rounded"
+            style={{ background: "var(--muted)", color: "var(--muted-text)" }}
+          >
+            ⌘K
+          </kbd>
         </div>
 
-        <button className="relative w-10 h-10 rounded-xl flex items-center justify-center transition-all"
-          style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}>
+        <button
+          className="relative w-10 h-10 rounded-xl flex items-center justify-center transition-all hover:bg-white/[0.06]"
+          style={{
+            background: "var(--glass-bg)",
+            border: "1px solid var(--glass-border)",
+          }}
+        >
           <Bell size={18} style={{ color: "var(--muted-text)" }} />
           {unread > 0 && (
             <span className="absolute top-2 right-2 w-2 h-2 rounded-full" style={{ background: "#a855f7" }} />
           )}
         </button>
 
-        <div className="w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold text-white"
-          style={{ background: "linear-gradient(135deg, #7c3aed, #ec4899)" }}>
+        <div
+          className="w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold text-white"
+          style={{ background: "linear-gradient(135deg, #7c3aed, #ec4899)" }}
+        >
           OB
         </div>
       </div>
+
+      {/* Bottom gradient line */}
+      <div
+        className="absolute bottom-0 left-0 right-0"
+        style={{
+          height: 1,
+          background: "linear-gradient(90deg, transparent, #7c3aed, #a855f7, transparent)",
+          opacity: 0.5,
+        }}
+      />
     </header>
   );
 }

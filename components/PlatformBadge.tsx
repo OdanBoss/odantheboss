@@ -13,8 +13,14 @@ const colors: Record<Platform, { bg: string; text: string }> = {
 export default function PlatformBadge({ name }: { name: Platform }) {
   const c = colors[name];
   return (
-    <span className="text-[11px] font-medium px-2 py-0.5 rounded-md"
-      style={{ background: c.bg, color: c.text }}>
+    <span
+      className="text-[11px] font-medium px-2.5 py-1 rounded-md transition-all duration-150"
+      style={{
+        background: c.bg,
+        color: c.text,
+        border: `1px solid ${c.text}33`,
+      }}
+    >
       {name}
     </span>
   );

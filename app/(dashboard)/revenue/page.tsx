@@ -18,6 +18,14 @@ import { DollarSign, TrendingUp, TrendingDown, CreditCard, ArrowUpRight } from "
 import StatCard from "@/components/StatCard";
 import { revenueData, platformData, formatCurrency, formatNumber } from "@/lib/data";
 
+const glassCard = {
+  background: "var(--glass-bg)",
+  backdropFilter: "blur(20px)",
+  WebkitBackdropFilter: "blur(20px)",
+  border: "1px solid var(--glass-border)",
+  boxShadow: "var(--glass-shadow)",
+} as React.CSSProperties;
+
 const COLORS = {
   spotify: "#1DB954",
   appleMusic: "#FC3C44",
@@ -46,7 +54,7 @@ export default function RevenuePage() {
       </div>
 
       {/* Revenue over time stacked bar */}
-      <div className="rounded-2xl p-6" style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}>
+      <div className="rounded-2xl p-6" style={glassCard}>
         <div className="flex items-center justify-between mb-6">
           <div>
             <h2 className="text-base font-semibold text-white">Ingresos por Plataforma</h2>
@@ -80,7 +88,7 @@ export default function RevenuePage() {
 
       {/* Line chart + platform table */}
       <div className="grid grid-cols-3 gap-5">
-        <div className="col-span-2 rounded-2xl p-6" style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}>
+        <div className="col-span-2 rounded-2xl p-6" style={glassCard}>
           <h2 className="text-base font-semibold text-white mb-1">Tendencia de Ingresos</h2>
           <p className="text-sm mb-5" style={{ color: "var(--muted-text)" }}>Línea de tendencia mensual total</p>
           <ResponsiveContainer width="100%" height={200}>
@@ -104,7 +112,7 @@ export default function RevenuePage() {
         </div>
 
         {/* Platform revenue table */}
-        <div className="rounded-2xl p-6" style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}>
+        <div className="rounded-2xl p-6" style={glassCard}>
           <h2 className="text-base font-semibold text-white mb-5">Ingresos por Plataforma</h2>
           <div className="space-y-4">
             {platformData.sort((a, b) => b.revenue - a.revenue).map((p, i) => (
@@ -133,7 +141,7 @@ export default function RevenuePage() {
       </div>
 
       {/* Monthly breakdown table */}
-      <div className="rounded-2xl p-6" style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}>
+      <div className="rounded-2xl p-6" style={glassCard}>
         <h2 className="text-base font-semibold text-white mb-5">Historial Mensual Detallado</h2>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">

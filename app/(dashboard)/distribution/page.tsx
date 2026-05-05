@@ -12,6 +12,14 @@ import {
   Tooltip,
 } from "recharts";
 
+const glassCard = {
+  background: "var(--glass-bg)",
+  backdropFilter: "blur(20px)",
+  WebkitBackdropFilter: "blur(20px)",
+  border: "1px solid var(--glass-border)",
+  boxShadow: "var(--glass-shadow)",
+} as React.CSSProperties;
+
 const statusIcons = {
   connected: { icon: CheckCircle, color: "text-emerald-400", bg: "rgba(52,211,153,0.1)", label: "Conectado" },
   pending: { icon: Clock, color: "text-amber-400", bg: "rgba(251,191,36,0.1)", label: "Pendiente" },
@@ -40,7 +48,7 @@ export default function DistributionPage() {
           { label: "Canciones Distribuidas", value: `${tracks.filter(t => t.status === "active").length}`, icon: CheckCircle, accent: "#ec4899", sub: `${tracks.filter(t => t.status === "pending").length} en proceso` },
         ].map((s) => (
           <div key={s.label} className="rounded-2xl p-5 flex items-start gap-4"
-            style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}>
+            style={glassCard}>
             <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
               style={{ background: `${s.accent}22` }}>
               <s.icon size={18} style={{ color: s.accent }} />
@@ -61,7 +69,7 @@ export default function DistributionPage() {
           const StatusIcon = st.icon;
           return (
             <div key={p.name} className="rounded-2xl p-5"
-              style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}>
+              style={glassCard}>
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center"
@@ -122,7 +130,7 @@ export default function DistributionPage() {
 
       {/* Radar + Track distribution */}
       <div className="grid grid-cols-2 gap-5">
-        <div className="rounded-2xl p-6" style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}>
+        <div className="rounded-2xl p-6" style={glassCard}>
           <h2 className="text-base font-semibold text-white mb-1">Comparativa de Plataformas</h2>
           <p className="text-sm mb-4" style={{ color: "var(--muted-text)" }}>Streams vs ingresos por plataforma (%)</p>
           <ResponsiveContainer width="100%" height={280}>
@@ -146,7 +154,7 @@ export default function DistributionPage() {
           </div>
         </div>
 
-        <div className="rounded-2xl p-6" style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}>
+        <div className="rounded-2xl p-6" style={glassCard}>
           <h2 className="text-base font-semibold text-white mb-5">Distribución de Canciones</h2>
           <div className="space-y-4">
             {tracks.map((track, i) => (

@@ -309,3 +309,205 @@ export function formatNumber(n: number): string {
 export function formatCurrency(n: number): string {
   return new Intl.NumberFormat("es-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(n);
 }
+
+export interface LabelApplication {
+  id: string;
+  labelName: string;
+  contactName: string;
+  email: string;
+  phone: string;
+  genres: string[];
+  catalogSize: number;
+  socialLinks: { instagram?: string; spotify?: string; website?: string };
+  message: string;
+  status: "pending" | "approved" | "rejected";
+  submittedAt: string;
+  reviewedAt?: string;
+}
+
+export const labelApplications: LabelApplication[] = [
+  {
+    id: "LA-001",
+    labelName: "Fuego Records",
+    contactName: "Carlos Mendoza",
+    email: "carlos@fuegorecords.com",
+    phone: "+1 (305) 555-0101",
+    genres: ["Reggaeton", "Trap Latino"],
+    catalogSize: 45,
+    socialLinks: { instagram: "@fuegorecords", spotify: "fuegorecords", website: "fuegorecords.com" },
+    message: "Sello independiente con 5 años de experiencia en el mercado latino. Representamos artistas emergentes con gran potencial.",
+    status: "pending",
+    submittedAt: "2026-04-28",
+  },
+  {
+    id: "LA-002",
+    labelName: "Noche Urbana Music",
+    contactName: "Valentina Ríos",
+    email: "val@nocheurbana.com",
+    phone: "+1 (786) 555-0202",
+    genres: ["Pop Latino", "R&B Latino"],
+    catalogSize: 120,
+    socialLinks: { instagram: "@nocheurbana", website: "nocheurbana.com" },
+    message: "Distribuidora con catálogo establecido en Latinoamérica y España. Buscamos expandir nuestra distribución digital.",
+    status: "approved",
+    submittedAt: "2026-04-15",
+    reviewedAt: "2026-04-20",
+  },
+  {
+    id: "LA-003",
+    labelName: "Barrio Digital",
+    contactName: "Miguel Ángel Torres",
+    email: "miguel@barriodigital.net",
+    phone: "+1 (954) 555-0303",
+    genres: ["Hip-Hop Latino", "Trap"],
+    catalogSize: 28,
+    socialLinks: { instagram: "@barriodigital", spotify: "barriodigital" },
+    message: "Colectivo de artistas independientes enfocado en hip-hop auténtico. Tenemos base de fans sólida en redes sociales.",
+    status: "pending",
+    submittedAt: "2026-05-01",
+  },
+  {
+    id: "LA-004",
+    labelName: "Sol y Mar Records",
+    contactName: "Daniela Vega",
+    email: "daniela@solymarrecords.com",
+    phone: "+34 91 555-0404",
+    genres: ["Pop Latino", "Flamenco Fusion"],
+    catalogSize: 200,
+    socialLinks: { instagram: "@solymar", website: "solymarrecords.com", spotify: "solymarrecords" },
+    message: "Sello con décadas de historia en España. Nuestro catálogo incluye artistas galardonados con Latin Grammy.",
+    status: "approved",
+    submittedAt: "2026-03-10",
+    reviewedAt: "2026-03-18",
+  },
+  {
+    id: "LA-005",
+    labelName: "Underground Beats",
+    contactName: "Javier Castillo",
+    email: "javier@ubbeats.com",
+    phone: "+1 (213) 555-0505",
+    genres: ["Electronic Latino", "Cumbia Digital"],
+    catalogSize: 15,
+    socialLinks: { instagram: "@ubbeats" },
+    message: "Proyecto experimental fusionando géneros tradicionales con electrónica moderna. Nuevo en la industria pero con visión clara.",
+    status: "rejected",
+    submittedAt: "2026-04-05",
+    reviewedAt: "2026-04-12",
+  },
+];
+
+export interface TrackSubmission {
+  title: string;
+  isrc: string;
+  artist: string;
+  featuredArtists?: string;
+  composer: string;
+  lyricist: string;
+  producer: string;
+  duration: string;
+  genre: string;
+  subgenre?: string;
+  explicit: boolean;
+  language: string;
+  lyrics?: string;
+}
+
+export interface ReleaseSubmission {
+  id: string;
+  releaseTitle: string;
+  releaseType: "single" | "ep" | "album";
+  upc: string;
+  artist: string;
+  label: string;
+  releaseDate: string;
+  genre: string;
+  subgenre?: string;
+  language: string;
+  coverArtUrl?: string;
+  territories: string[];
+  platforms: string[];
+  tracks: TrackSubmission[];
+  copyright: string;
+  recordingCopyright: string;
+  notes?: string;
+  status: "draft" | "submitted" | "in_review" | "approved" | "rejected";
+  submittedAt?: string;
+  artistId?: string;
+}
+
+export const releaseSubmissions: ReleaseSubmission[] = [
+  {
+    id: "RS-001",
+    releaseTitle: "Corazón de Noche",
+    releaseType: "single",
+    upc: "858012345678",
+    artist: "OdanTheBoss",
+    label: "OdanTheBoss Distribution",
+    releaseDate: "2026-06-01",
+    genre: "Reggaeton",
+    language: "Español",
+    territories: ["worldwide"],
+    platforms: ["Spotify", "Apple Music", "YouTube Music", "Amazon Music", "Tidal"],
+    tracks: [
+      {
+        title: "Corazón de Noche",
+        isrc: "US-X1Y-26-00001",
+        artist: "OdanTheBoss",
+        composer: "OdanTheBoss",
+        lyricist: "OdanTheBoss",
+        producer: "El Maestro",
+        duration: "3:24",
+        genre: "Reggaeton",
+        explicit: false,
+        language: "Español",
+      },
+    ],
+    copyright: "© 2026 OdanTheBoss Distribution",
+    recordingCopyright: "℗ 2026 OdanTheBoss Distribution",
+    status: "submitted",
+    submittedAt: "2026-04-30T10:00:00Z",
+  },
+  {
+    id: "RS-002",
+    releaseTitle: "Fuego y Cenizas EP",
+    releaseType: "ep",
+    upc: "858012345679",
+    artist: "OdanTheBoss",
+    label: "OdanTheBoss Distribution",
+    releaseDate: "2026-07-15",
+    genre: "Trap Latino",
+    language: "Español",
+    territories: ["worldwide"],
+    platforms: ["Spotify", "Apple Music", "YouTube Music", "Amazon Music", "Tidal", "Deezer"],
+    tracks: [
+      { title: "Fuego", isrc: "US-X1Y-26-00002", artist: "OdanTheBoss", composer: "OdanTheBoss", lyricist: "OdanTheBoss", producer: "DJ Nova", duration: "2:58", genre: "Trap Latino", explicit: true, language: "Español" },
+      { title: "Cenizas", isrc: "US-X1Y-26-00003", artist: "OdanTheBoss", composer: "OdanTheBoss", lyricist: "OdanTheBoss", producer: "DJ Nova", duration: "3:12", genre: "Trap Latino", explicit: false, language: "Español" },
+      { title: "Resurgir", isrc: "US-X1Y-26-00004", artist: "OdanTheBoss", featuredArtists: "La Reina", composer: "OdanTheBoss, La Reina", lyricist: "OdanTheBoss", producer: "El Maestro", duration: "3:45", genre: "Reggaeton", explicit: false, language: "Español" },
+    ],
+    copyright: "© 2026 OdanTheBoss Distribution",
+    recordingCopyright: "℗ 2026 OdanTheBoss Distribution",
+    status: "in_review",
+    submittedAt: "2026-04-15T14:30:00Z",
+  },
+  {
+    id: "RS-003",
+    releaseTitle: "Horizonte",
+    releaseType: "album",
+    upc: "858012345680",
+    artist: "OdanTheBoss",
+    label: "OdanTheBoss Distribution",
+    releaseDate: "2026-09-01",
+    genre: "Pop Latino",
+    language: "Español",
+    territories: ["worldwide"],
+    platforms: ["Spotify", "Apple Music", "YouTube Music", "Amazon Music", "Tidal", "Deezer", "SoundCloud"],
+    tracks: [
+      { title: "Nuevo Amanecer", isrc: "US-X1Y-26-00005", artist: "OdanTheBoss", composer: "OdanTheBoss", lyricist: "OdanTheBoss", producer: "Productor X", duration: "3:30", genre: "Pop Latino", explicit: false, language: "Español" },
+      { title: "Sin Límites", isrc: "US-X1Y-26-00006", artist: "OdanTheBoss", composer: "OdanTheBoss", lyricist: "OdanTheBoss", producer: "Productor X", duration: "3:55", genre: "Pop Latino", explicit: false, language: "Español" },
+    ],
+    copyright: "© 2026 OdanTheBoss Distribution",
+    recordingCopyright: "℗ 2026 OdanTheBoss Distribution",
+    notes: "Álbum debut completo. 12 canciones en total, entregando las primeras 2 ahora.",
+    status: "draft",
+  },
+];
