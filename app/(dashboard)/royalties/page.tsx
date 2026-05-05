@@ -40,6 +40,12 @@ export default function RoyaltiesPage() {
 
   return (
     <div className="space-y-8">
+      {/* Header */}
+      <div className="mb-2">
+        <h1 className="text-4xl font-bold text-white mb-2">Tus Regalías</h1>
+        <p style={{ color: "rgba(255,255,255,0.6)" }}>Seguimiento detallado de pagos y estados de tus ganancias</p>
+      </div>
+
       {/* KPIs */}
       <div className="grid grid-cols-4 gap-5">
         {[
@@ -64,10 +70,15 @@ export default function RoyaltiesPage() {
       </div>
 
       {/* Bar chart + breakdown */}
-      <div className="grid grid-cols-3 gap-5">
-        <div className="col-span-2 rounded-2xl p-6" style={glassCard}>
-          <h2 className="text-base font-semibold text-white mb-1">Regalías Mensuales</h2>
-          <p className="text-sm mb-5" style={{ color: "var(--muted-text)" }}>Historial de ingresos por período</p>
+      <div className="grid grid-cols-3 gap-5 mt-8">
+        <div className="col-span-2 rounded-3xl p-8 relative overflow-hidden" style={{
+          ...glassCard,
+          background: "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)",
+          boxShadow: "0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05), 0 -1px 0 0 rgba(16,185,129,0.2) inset",
+        }}>
+          <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: "linear-gradient(90deg, transparent, #10b981, transparent)", opacity: 0.8 }} />
+          <h2 className="text-xl font-bold text-white mb-1">Historial de Regalías</h2>
+          <p className="text-sm mb-6" style={{ color: "rgba(255,255,255,0.6)" }}>Ganancias mensuales con estado de pago</p>
           <ResponsiveContainer width="100%" height={220}>
             <BarChart data={barData} margin={{ top: 5, right: 10, left: -10, bottom: 0 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#1e1e30" />

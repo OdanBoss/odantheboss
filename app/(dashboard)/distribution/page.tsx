@@ -39,6 +39,12 @@ export default function DistributionPage() {
 
   return (
     <div className="space-y-8">
+      {/* Header */}
+      <div className="mb-2">
+        <h1 className="text-4xl font-bold text-white mb-2">Distribución Global</h1>
+        <p style={{ color: "rgba(255,255,255,0.6)" }}>Tu música en {connected} plataformas conectadas | {formatNumber(totalStreams)} reproducciones totales</p>
+      </div>
+
       {/* Status overview */}
       <div className="grid grid-cols-4 gap-5">
         {[
@@ -63,13 +69,17 @@ export default function DistributionPage() {
       </div>
 
       {/* Platform cards */}
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid grid-cols-3 gap-5 mt-8">
         {platformData.map((p) => {
           const st = statusIcons[p.status];
           const StatusIcon = st.icon;
           return (
-            <div key={p.name} className="rounded-2xl p-5"
-              style={glassCard}>
+            <div key={p.name} className="rounded-3xl p-6 group transition-all transform hover:scale-105 hover:-translate-y-1"
+              style={{
+                ...glassCard,
+                background: "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)",
+                boxShadow: "0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05), 0 -1px 0 0 rgba(255,255,255,0.1) inset",
+              }}>
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center"
