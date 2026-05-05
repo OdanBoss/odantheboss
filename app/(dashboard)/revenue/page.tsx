@@ -45,6 +45,12 @@ export default function RevenuePage() {
 
   return (
     <div className="space-y-8">
+      {/* Header */}
+      <div className="mb-2">
+        <h1 className="text-4xl font-bold text-white mb-2">Ingresos</h1>
+        <p style={{ color: "rgba(255,255,255,0.6)" }}>Análisis detallado de ganancias por plataforma y período de tiempo</p>
+      </div>
+
       {/* KPIs */}
       <div className="grid grid-cols-4 gap-5">
         <StatCard title="Ingresos este mes" value={formatCurrency(latestMonth.total)} change={parseFloat(growthRate)} icon={DollarSign} accent="#10b981" />
@@ -54,10 +60,16 @@ export default function RevenuePage() {
       </div>
 
       {/* Revenue over time stacked bar */}
-      <div className="rounded-2xl p-6" style={glassCard}>
-        <div className="flex items-center justify-between mb-6">
+      <div className="rounded-3xl p-8 relative overflow-hidden mt-8" style={{
+        ...glassCard,
+        background: "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)",
+        boxShadow: "0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05), 0 -1px 0 0 rgba(16,185,129,0.2) inset",
+      }}>
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: "linear-gradient(90deg, transparent, #10b981, transparent)", opacity: 0.8 }} />
+        <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 className="text-base font-semibold text-white">Ingresos por Plataforma</h2>
+            <h2 className="text-xl font-bold text-white mb-1">Ingresos por Plataforma</h2>
+            <p className="text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>Desglose de ganancias en los últimos 11 meses</p>
             <p className="text-sm" style={{ color: "var(--muted-text)" }}>Desglose mensual por servicio de streaming</p>
           </div>
           <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-emerald-400 text-sm"
