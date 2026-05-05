@@ -70,19 +70,26 @@ export default function AdminTracksPage() {
 
   return (
     <ProtectedRoute>
-      <div className="space-y-6">
+      <div className="space-y-8">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-white" style={{ textShadow: "0 0 20px rgba(168,85,247,0.3)" }}>Canciones</h1>
-            <p className="text-sm mt-1" style={{ color: "var(--muted-text)" }}>{trackList.length} canciones en el catálogo</p>
+            <h1 className="text-4xl font-bold text-white mb-2">Gestión de Canciones</h1>
+            <p style={{ color: "rgba(255,255,255,0.6)" }}>Administra tu catálogo: {trackList.length} canciones distribuidas</p>
           </div>
-          <button onClick={openAdd} className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-white"
-            style={{ background: "linear-gradient(135deg, #7c3aed, #a855f7)", boxShadow: "0 4px 15px rgba(124,58,237,0.35)" }}>
-            <Plus size={16} /> Agregar Canción
+          <button onClick={openAdd} className="flex items-center gap-2 px-5 py-3 rounded-lg text-sm font-bold text-white transition-all transform hover:scale-105 hover:-translate-y-1 active:scale-95"
+            style={{
+              background: "linear-gradient(135deg, #7c3aed, #a855f7)",
+              boxShadow: "0 6px 20px rgba(124,58,237,0.4)"
+            }}>
+            <Plus size={18} /> Agregar Canción
           </button>
         </div>
 
-        <div className="rounded-2xl overflow-hidden relative" style={glassCard}>
+        <div className="rounded-3xl overflow-hidden relative mt-8" style={{
+          ...glassCard,
+          background: "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)",
+          boxShadow: "0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05), 0 -1px 0 0 rgba(124,58,237,0.2) inset",
+        }}>
           <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: "linear-gradient(90deg, transparent, #7c3aed55, transparent)" }} />
           <table className="w-full text-sm">
             <thead>

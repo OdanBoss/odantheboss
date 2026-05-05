@@ -37,15 +37,19 @@ export default function AdminPage() {
   return (
     <ProtectedRoute>
       <div className="space-y-8">
-        <div>
-          <h1 className="text-2xl font-bold text-white" style={{ textShadow: "0 0 20px rgba(168,85,247,0.3)" }}>Panel de Administración</h1>
-          <p className="text-sm mt-1" style={{ color: "var(--muted-text)" }}>Vista general del sistema OdanTheBoss Distribution</p>
+        <div className="mb-2">
+          <h1 className="text-4xl font-bold text-white mb-2">Panel de Administración</h1>
+          <p style={{ color: "rgba(255,255,255,0.6)" }}>Gestión completa del catálogo, distribución y solicitudes de sellos</p>
         </div>
 
         {/* KPIs */}
-        <div className="grid grid-cols-5 gap-4">
+        <div className="grid grid-cols-5 gap-4 mt-8">
           {kpis.map((k) => (
-            <div key={k.label} className="rounded-2xl p-5 relative overflow-hidden" style={glassCard}>
+            <div key={k.label} className="rounded-2xl p-5 relative overflow-hidden group transition-all transform hover:scale-105 hover:-translate-y-1" style={{
+              ...glassCard,
+              background: "linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)",
+              boxShadow: "0 4px 24px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05), 0 -1px 0 0 rgba(255,255,255,0.1) inset",
+            }}>
               <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: `linear-gradient(90deg, transparent, ${k.accent}55, transparent)` }} />
               <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3"
                 style={{ background: `${k.accent}22`, boxShadow: `0 0 12px ${k.accent}22` }}>
@@ -58,13 +62,20 @@ export default function AdminPage() {
           ))}
         </div>
 
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-2 gap-6 mt-8">
           {/* Recent Applications */}
-          <div className="rounded-2xl overflow-hidden relative" style={glassCard}>
-            <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: "linear-gradient(90deg, transparent, #f59e0b55, transparent)" }} />
-            <div className="flex items-center justify-between px-6 py-5 border-b" style={{ borderColor: "var(--glass-border)" }}>
-              <h2 className="text-base font-semibold text-white">Solicitudes Recientes</h2>
-              <Link href="/admin/applications" className="text-sm font-medium" style={{ color: "#a855f7" }}>Ver todas →</Link>
+          <div className="rounded-3xl overflow-hidden relative" style={{
+            ...glassCard,
+            background: "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05), 0 -1px 0 0 rgba(245,158,11,0.2) inset",
+          }}>
+            <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: "linear-gradient(90deg, transparent, #f59e0b, transparent)", opacity: 0.8 }} />
+            <div className="flex items-center justify-between px-8 py-6 border-b" style={{ borderColor: "rgba(255,255,255,0.1)" }}>
+              <div>
+                <h2 className="text-lg font-bold text-white mb-0.5">Solicitudes Recientes</h2>
+                <p className="text-xs" style={{ color: "rgba(255,255,255,0.6)" }}>{pendingApps} pendientes de revisión</p>
+              </div>
+              <Link href="/admin/applications" className="text-sm font-bold px-3 py-1.5 rounded-lg transition-all hover:bg-amber-500/20" style={{ color: "#f59e0b", background: "rgba(245,158,11,0.1)" }}>Ver todas →</Link>
             </div>
             <div className="divide-y" style={{ borderColor: "var(--glass-border)" }}>
               {recentApps.map((app) => {
@@ -87,9 +98,13 @@ export default function AdminPage() {
           </div>
 
           {/* Quick Actions */}
-          <div className="rounded-2xl p-6 relative" style={glassCard}>
-            <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1, background: "linear-gradient(90deg, transparent, #7c3aed55, transparent)" }} />
-            <h2 className="text-base font-semibold text-white mb-5">Acciones Rápidas</h2>
+          <div className="rounded-3xl p-8 relative" style={{
+            ...glassCard,
+            background: "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05), 0 -1px 0 0 rgba(124,58,237,0.2) inset",
+          }}>
+            <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: "linear-gradient(90deg, transparent, #7c3aed, transparent)", opacity: 0.8 }} />
+            <h2 className="text-lg font-bold text-white mb-6">Acciones Rápidas</h2>
             <div className="grid grid-cols-2 gap-3">
               {[
                 { label: "Gestionar Canciones", href: "/admin/tracks", accent: "#7c3aed" },
@@ -102,11 +117,12 @@ export default function AdminPage() {
                 <Link
                   key={action.href}
                   href={action.href}
-                  className="flex items-center justify-center p-4 rounded-xl text-sm font-medium text-center transition-all hover:scale-[1.02]"
+                  className="flex items-center justify-center p-4 rounded-xl text-sm font-bold text-center transition-all transform hover:scale-105 hover:-translate-y-0.5 active:scale-95"
                   style={{
-                    background: `${action.accent}18`,
-                    border: `1px solid ${action.accent}33`,
+                    background: `${action.accent}20`,
+                    border: `1px solid ${action.accent}40`,
                     color: action.accent,
+                    boxShadow: `0 4px 12px ${action.accent}20`,
                   }}
                 >
                   {action.label}
