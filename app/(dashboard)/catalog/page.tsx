@@ -37,7 +37,13 @@ export default function CatalogPage() {
   );
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
+      {/* Header */}
+      <div className="mb-4">
+        <h1 className="text-4xl font-bold text-white mb-2">Tu Catálogo</h1>
+        <p style={{ color: "rgba(255,255,255,0.6)" }}>Gestiona tus canciones y álbumes distribuidos en plataformas globales</p>
+      </div>
+
       {/* Summary cards */}
       <div className="grid grid-cols-4 gap-5">
         {[
@@ -62,15 +68,18 @@ export default function CatalogPage() {
       </div>
 
       {/* Tabs + Search */}
-      <div className="flex items-center justify-between">
-        <div className="flex gap-1 p-1 rounded-xl" style={glassCard}>
+      <div className="flex items-center justify-between gap-6 mt-8">
+        <div className="flex gap-2 p-1.5 rounded-lg" style={{
+          background: "rgba(255,255,255,0.05)",
+          border: "1px solid rgba(255,255,255,0.1)",
+        }}>
           {(["tracks", "albums"] as Tab[]).map((t) => (
             <button key={t} onClick={() => setTab(t)}
-              className="px-5 py-2 rounded-lg text-sm font-medium transition-all"
+              className="px-6 py-2.5 rounded-lg text-sm font-bold transition-all"
               style={{
-                background: tab === t ? "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(168,85,247,0.2))" : "transparent",
-                color: tab === t ? "#a855f7" : "var(--muted-text)",
-                border: tab === t ? "1px solid rgba(168,85,247,0.3)" : "1px solid transparent",
+                background: tab === t ? "linear-gradient(135deg, #7c3aed, #a855f7)" : "transparent",
+                color: tab === t ? "white" : "rgba(255,255,255,0.6)",
+                boxShadow: tab === t ? "0 4px 12px rgba(124,58,237,0.3)" : "none",
               }}>
               {t === "tracks" ? `Canciones (${tracks.length})` : `Álbumes (${albums.length})`}
             </button>
@@ -78,31 +87,47 @@ export default function CatalogPage() {
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm"
-            style={{ background: "var(--card)", border: "1px solid var(--card-border)", color: "var(--muted-text)" }}>
-            <Search size={14} />
+          <div className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-all"
+            style={{
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.1)",
+              color: "rgba(255,255,255,0.6)"
+            }}>
+            <Search size={16} />
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Buscar..."
+              placeholder="Buscar canción, álbum..."
               className="bg-transparent outline-none text-white placeholder:text-gray-500 w-40"
             />
           </div>
-          <button className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm"
-            style={{ background: "var(--card)", border: "1px solid var(--card-border)", color: "var(--muted-text)" }}>
-            <Filter size={14} />
+          <button className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm transition-all font-medium"
+            style={{
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.1)",
+              color: "rgba(255,255,255,0.6)"
+            }}>
+            <Filter size={16} />
             Filtrar
           </button>
-          <button className="px-4 py-2.5 rounded-xl text-sm font-medium text-white"
-            style={{ background: "linear-gradient(135deg, #7c3aed, #a855f7)", boxShadow: "0 4px 15px rgba(124,58,237,0.35)" }}>
-            + Subir Canción
+          <button className="px-5 py-2.5 rounded-lg text-sm font-bold text-white transition-all hover:scale-105 active:scale-95"
+            style={{
+              background: "linear-gradient(135deg, #7c3aed, #a855f7)",
+              boxShadow: "0 6px 20px rgba(124,58,237,0.4)"
+            }}>
+            + Subir
           </button>
         </div>
       </div>
 
       {/* Tracks table */}
       {tab === "tracks" && (
-        <div className="rounded-2xl overflow-hidden" style={glassCard}>
+        <div className="rounded-3xl overflow-hidden relative" style={{
+          ...glassCard,
+          background: "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)",
+          boxShadow: "0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05), 0 -1px 0 0 rgba(124,58,237,0.2) inset",
+        }}>
+          <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: "linear-gradient(90deg, transparent, #7c3aed, transparent)", opacity: 0.8 }} />
           <table className="w-full text-sm">
             <thead>
               <tr className="text-xs border-b" style={{ color: "var(--muted-text)", borderColor: "var(--card-border)" }}>
